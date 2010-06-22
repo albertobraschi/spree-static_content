@@ -1,0 +1,55 @@
+Update
+
+Now run in Spree 0.11.0
+
+
+= Static Content
+
+Good, clean content management of pages for Spree.  You can use this to:
+
+- Add and manage static pages such as an 'About' page.
+- Show a static page instead of existing dynamic pages such as the home page,
+  products pages, and taxon pages.
+
+To override a dynamic page, use the path of that dynamic page as the slug when
+you create your page in the Spree Administration area, including the
+leading slash.  For example:
+
+- to override the home page, use a path of '/' (without quotes).
+- to override a product page, use its path, e.g. '/products/apache-baseball-jersey' (without quotes).
+
+The dynamic page can be made available again if you delete the static page or change its slug.
+
+Create your own copy of the app/views/content/show.html.erb template in your site
+extension to change the layout of the static pages.
+
+=== Example to use the static pages inside a menu
+  <ul>
+    <% for page in Page.header_links do %>
+      <li><%= link_to page.title, page.link %></li>
+    <% end %>
+  </ul>
+
+== Installation and filter chain workaround:
+
+Suggest you load this extension after the localization extension (you get the localization extension for free in spree core)
+and before your remaining extensions as the static content extension specifies a filter in Spree::BaseController that may not get inherited by its
+controller subclasses if other extensions modify these controller subclasses first.
+
+We load the localization extension first to prevent its filter from being omitted from the filter chain.
+
+Hope to resolve this workaround in the near future, see bug here for more info:
+http://railsdog.lighthouseapp.com/projects/31096-spree/tickets/653-specifying-filters-in-extensions-can-create-filter-chains-missing-filters
+
+Add this to your environment.rb inside the
+
+"Spree::Initializer.run do |config|" block:
+
+===
+  config.extensions = [:localization, :static_content, :all]
+
+== Dependencies
+
+=== http://github.com/azimuth/spree-wymeditor
+  script/extension install  git://github.com/azimuth/spree-wymeditor.git
+

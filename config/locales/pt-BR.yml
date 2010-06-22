@@ -1,0 +1,22 @@
+---
+pt-BR:
+    pages: Páginas
+    ext_static_content_static_pages: Páginas estáticas
+    ext_static_content_static_pages_desc: Administrar página estática com editor visual (WYSIWYG).
+    ext_static_content_title: Título
+    ext_static_content_slug: Identificador
+    ext_static_content_body: Corpo
+    ext_static_content_new_page: Nova página
+    ext_static_content_editing_page: Editando página
+    ext_static_content_foreign_link: Link externo (URL)
+    ext_static_content_show_in_header: Mostrar no cabeçalho
+    ext_static_content_show_in_footer: Mostrar no rodapé
+    ext_static_content_position: Posição
+    ext_static_content_visible: Visibilidade
+    ext_static_content_confirm_delete: Você tem certeza ?
+    ext_static_content_link: Link
+    ext_static_content_meta_title: Meta Title
+    ext_static_content_meta_keywords: Meta Keywords
+    ext_static_content_meta_description: Meta Description
+    ext_static_content_layout: Layout
+

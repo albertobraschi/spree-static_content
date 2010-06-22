@@ -1,0 +1,36 @@
+<%= render :partial => 'admin/shared/configuration_menu' %>
+
+<h1><%=t("ext_static_content_static_pages") %></h1>
+
+<table class="admin-report" width="545">
+	<thead>
+		<tr>
+      		<th><%=t("ext_static_content_title")%></th>
+      		<th><%=t("ext_static_content_link")%></th>
+      		<th><%=t("ext_static_content_visible")%></th>
+      		<th><%=t("action")%></th>
+    	</tr>
+  	</thead>
+	
+	<tbody>
+    	<% @pages.each do |page| %>
+		<tr class="<%= cycle('even', 'odd') %>">
+			<td>
+				<%= page.title %>
+			</td>
+			<td>
+				<%= link_to page.link, page.link %>
+			</td>
+			<td>
+			  <%= page.visible %>
+			</td>
+			<td>
+	          <%=link_to t("edit"), edit_object_url(page) %> |
+	          <%=link_to t("delete"), object_url(page), :method => :delete, :confirm=> t("ext_static_content_confirm_delete") %>
+	        </td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<%= link_to t("ext_static_content_new_page"), new_object_url %>
